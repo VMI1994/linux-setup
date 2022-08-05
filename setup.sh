@@ -3,6 +3,7 @@
 clear
 
 # update the system and install tmux
+cd ~/
 echo "updating system and installing nala and tmux"
 sudo update
 sudo apt install tmux nala
