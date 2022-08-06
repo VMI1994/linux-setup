@@ -20,3 +20,20 @@ chmod +x setup.sh
 or you use this 1 liner:
 
 cd ~ && sudo apt install git && git clone https://github.com/VMI1994/linux-setup.git && bash ~/linux-setup/setup.sh
+
+-------------------------------------------------------------------------------------------------------------------
+
+What is does in a nutshell is:
+  1. Add aliases in the alias.txt file to ~/.bashrc
+  2. Calls a seperate program (exec.sh) to activate the aliases(if done in main script it halts the script)
+  3. Install nala if available (nala is a frontend for the apt package manager)
+  4. Update the packages
+  5. Upgrade the packages
+  6. Installs the programs in apps.txt
+  7. Runs apt autoremove to clean packages
+  8. Installs and configures unattended-upgrades and moves config files into place (config is 20auto-upgrades & 50unattended-upgrades)
+  9. Installs and configures OpenSSH-server, generates ssh keys and restarts the service
+  10. Installs and configures fail2ban (check jail.local for configuration settings)
+  11. Finishes and deletes all downloaded files
+
+
