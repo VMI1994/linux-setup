@@ -8,7 +8,7 @@ nmap
 curl
 rsync
 rlwrap
-trasmission
+transmission
 timeshift
 clamav
 clamtk
