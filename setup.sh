@@ -16,8 +16,10 @@ clear
 echo "Installing python3 and nala frontend for apt"
 sudo apt update
 sudo apt install python3 wget
-echo "deb https://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
-wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null
+# Additional needed repositories
+sudo add-apt-repository -y ppa:teejee2008/timeshift #repo for timeshift
+echo "deb https://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list #nala repo
+wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null #nala key
 sudo apt update
 sudo apt install nala
 sleep 2
