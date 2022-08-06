@@ -13,4 +13,5 @@ timeshift
 clamav
 clamtk
 tasksel
-nala
+python3
+wget
