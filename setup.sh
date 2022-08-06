@@ -20,9 +20,6 @@ echo "deb https://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.
 wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null
 sudo apt update
 sudo apt install nala
-clear
-JUNK=input "When prompted, enter '1 2 3' EXACTLY as show with spaces between each number"
-sudo nala fetch
 sleep 2
 
 
