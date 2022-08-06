@@ -13,3 +13,4 @@ timeshift
 clamav
 clamtk
 tasksel
+nala
