@@ -4,3 +4,7 @@ htop
 openssh-server
 unattended-upgrades
 fail2ban
+nmap
+curl
+rsync
+rlwrap
