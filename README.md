@@ -7,12 +7,12 @@ with sudo privileges.
 
 INSTALLATION:
 
-cd ~
+cd ~ /n
 git clone https://github.com/VMI1994/linux-setup.git
 cd ~/linux-setup
 chmod +x setup.sh
 ./setup.sh
 
-or you use this 1 liner
+or you use this 1 liner:
 
 cd ~ && sudo apt install git && git clone https://github.com/VMI1994/linux-setup.git && bash ~/linux-setup/setup.sh
