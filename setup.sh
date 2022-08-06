@@ -11,7 +11,7 @@ echo 'done...'
 sleep 1
 
 
-# Install nala frontend for apt
+# Install respositories
 clear
 echo "Installing additional repositories"
 # Additional needed repositories
