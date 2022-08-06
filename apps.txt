@@ -8,3 +8,8 @@ nmap
 curl
 rsync
 rlwrap
+trasmission
+timeshift
+clamav
+clamtk
+tasksel
