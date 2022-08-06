@@ -68,7 +68,7 @@ sudo dpkg-reconfigure --priority=low unattended-upgrades
 sudo mv /etc/apt/apt.conf.d/20auto-upgrades /etc/apt/apt.conf.d/20auto-upgrades.old
 sudo cp ~/linux-setup/20auto-upgrades /etc/apt/apt.conf.d/20auto-upgrades
 sudo mv /etc/apt/apt.conf.d/50unattended-upgrades /etc/apt/apt.conf.d/50unattended-upgrades.old
-sudo cp ~/linux-setup/50unattended-upgrades /etc/aptapt.conf.d/50unattended-upgrades
+sudo cp ~/linux-setup/50unattended-upgrades /etc/apt/apt.conf.d/50unattended-upgrades
 sleep 2
 
 # Configure OpenSSH-Server (Credit to Jay LaCroix - learnlinux.tv)
