@@ -22,7 +22,7 @@ sudo apt update
 sudo apt install nala
 clear
 JUNK=input "When prompted, enter '1 2 3' EXACTLY as show with spaces between each number"
-nala fetch
+sudo nala fetch
 sleep 2
 
 
