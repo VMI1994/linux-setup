@@ -43,8 +43,8 @@ do
     list=("$list ""$new")
     counter=$(( $counter + 1 ))
 done
-apps=("$list"
-echo "sudo apt install $apps"
+apps=("$list")
+sudo apt install $apps
 curl -s https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /usr/local/bin/cht.sh
 
 
