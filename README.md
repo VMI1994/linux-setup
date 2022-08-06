@@ -25,7 +25,7 @@ cd ~ && sudo apt install git && git clone https://github.com/VMI1994/linux-setup
 
 What is does in a nutshell is:
   1. Add aliases in the alias.txt file to ~/.bashrc
-  2. Calls a seperate program (exec.sh) to activate the aliases(if done in main script it halts the script)
+  2. Calls a seperate program (alias.sh) to activate the aliases(if done in main script it halts the script)
   3. Install nala if available (nala is a frontend for the apt package manager)
   4. Update the packages
   5. Upgrade the packages
