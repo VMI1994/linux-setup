@@ -58,6 +58,7 @@ if [ $? == 0 ]; then
 else
   sudo apt install $apps
 fi
+curl -s https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /usr/local/bin/cht.sh
 
 
 # Cleaning up unneeded files
