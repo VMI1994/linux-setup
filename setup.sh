@@ -13,29 +13,19 @@ sleep 1
 
 # Install nala frontend for apt
 clear
-echo "Installing python3 and nala frontend for apt"
-sudo apt update
-sudo apt install python3 wget
+echo "Installing additional repositories"
 # Additional needed repositories
 sudo add-apt-repository -y ppa:teejee2008/timeshift #repo for timeshift
 echo "deb https://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list #nala repo
 wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null #nala key
-sudo apt update
-sudo apt install nala
 sleep 2
 
 
-# Update system with nala.  Will fall back to apt if nala install failed
+# Update system
 clear
 echo "Updating the system"
-which nala > /dev/null
-if [ $? == 0 ]; then
-  echo "nala install succeeded"
-  sudo nala upgrade
-else
-  echo "nala install failed"
-  sudo apt dist-upgrade
-fi
+sudo apt update
+sudo apt dist-upgrade -y
 
 
 # Install common programs
@@ -53,13 +43,8 @@ do
     list=("$list ""$new")
     counter=$(( $counter + 1 ))
 done
-apps=("$list")
-which nala > /dev/null
-if [ $? == 0 ]; then
-  sudo nala install $apps
-else
-  sudo apt install $apps
-fi
+apps=("$list"
+echo "sudo apt install $apps"
 curl -s https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /usr/local/bin/cht.sh
 
 
@@ -72,9 +57,9 @@ clear
 echo "Setting up unattended-upgrades...at the prompt please select 'Yes'..."
 sleep 5
 sudo dpkg-reconfigure --priority=low unattended-upgrades
-sudo mv /etc/apt/apt.conf.d/20auto-upgrades /etc/apt/apt.conf.d/20auto-upgrades.old
+sudo rm /etc/apt/apt.conf.d/20auto-upgrades
 sudo cp ~/linux-setup/20auto-upgrades /etc/apt/apt.conf.d/20auto-upgrades
-sudo mv /etc/apt/apt.conf.d/50unattended-upgrades /etc/apt/apt.conf.d/50unattended-upgrades.old
+sudo rm /etc/apt/apt.conf.d/50unattended-upgrades
 sudo cp ~/linux-setup/50unattended-upgrades /etc/apt/apt.conf.d/50unattended-upgrades
 sleep 2
 
