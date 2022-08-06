@@ -85,6 +85,10 @@ sudo cp ~/linux-setup/jail.local /etc/fail2ban/jail.local
 echo "Fail2ban is Setup"
 sleep 2
 
+# Attempt to install nala (frontend for apt package manager)
+echo "Installing nala"
+sudo apt install nala
+
 # Cleanup & exit
 clear
 echo "setup is complete...."
