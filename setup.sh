@@ -6,7 +6,7 @@ clear
 echo 'Enter a hostname for this server (example ubuntu-server)'
 read hostname
 clear
-sudo hostnamectl set-hostname $hostanme
+sudo hostnamectl set-hostname $hostname
 echo "hostname has been set to $hostname"
 echo
 echo 
