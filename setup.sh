@@ -80,7 +80,9 @@ read junk
 # Set up unattended-upgrades (Credit to Jay LaCroix - learnlinux.tv)
 clear
 echo "Setting up unattended-upgrades...at the prompt please select 'Yes'..."
+echo
 echo "Press Enter to continue"
+read junk
 sudo dpkg-reconfigure --priority=low unattended-upgrades
 sudo rm /etc/apt/apt.conf.d/20auto-upgrades
 sudo cp ~/linux-setup/20auto-upgrades /etc/apt/apt.conf.d/20auto-upgrades
@@ -89,6 +91,7 @@ sudo cp ~/linux-setup/50unattended-upgrades /etc/apt/apt.conf.d/50unattended-upg
 echo
 echo
 echo "Press Enter to continue"
+read junk
 
 # Configure OpenSSH-Server (Credit to Jay LaCroix - learnlinux.tv)
 clear
@@ -97,6 +100,7 @@ sleep 1
 echo
 echo
 echo "Regenerating SSH keys....Please press enter at all prompts..."
+echo
 echo "Press Enter to continue"
 read junk
 sudo ssh-keygen -t ed25519
@@ -109,8 +113,8 @@ sleep 2
 sudo systemctl restart sshd
 echo
 echo
-echo "SSH service restarted"
-
+echo "SSH service restarted, press Enter to continue"
+read junk
 
 # Setup Fail2ban
 clear
