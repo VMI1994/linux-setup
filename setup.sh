@@ -43,7 +43,7 @@ which cloud-init > /dev/null
 if [ $? == 0 ]
 then
   echo "Cloud-init detected, removing"
-  sudo apt remove cloud-init
+  sudo apt remove cloud-init -y
 else
   echo "Cloud-init not installed, continuing"
 fi
@@ -71,7 +71,7 @@ read junk
 
 # Cleaning up unneeded files
 echo "Removing unused packages"
-sudo apt autoremove
+sudo apt autoremove -y
 echo
 echo
 echo "Done, Press Enter"
