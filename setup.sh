@@ -28,8 +28,15 @@ sudo apt update
 sudo apt dist-upgrade -y
 
 
-# Install common programs
+# Remove cloud-init if present and Install common programs
 clear
+echo "Checking for presence of cloud-init"
+which cloud-init > /dev/null
+if ( $? = 1 ); then
+  echo "Cloud-init detected, removing"
+  sudo apt remove cloud-init
+else
+  echo "Cloud-init not installed, continuing"
 echo "Installing common programs"
 sleep 1
 # Create list of apps to install from apps.txt
