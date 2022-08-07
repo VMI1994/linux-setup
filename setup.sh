@@ -34,7 +34,7 @@ read junk
 clear
 echo "Checking for presence of cloud-init"
 which cloud-init > /dev/null
-if [ $? = 1 ]
+if [ $? == 1 ]
 then
   echo "Cloud-init detected, removing"
   sudo apt remove cloud-init
