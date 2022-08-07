@@ -32,11 +32,13 @@ sudo apt dist-upgrade -y
 clear
 echo "Checking for presence of cloud-init"
 which cloud-init > /dev/null
-if ( $? = 1 ); then
+if [ $? = 1 ]
+then
   echo "Cloud-init detected, removing"
   sudo apt remove cloud-init
 else
   echo "Cloud-init not installed, continuing"
+fi
 echo "Installing common programs"
 sleep 1
 # Create list of apps to install from apps.txt
