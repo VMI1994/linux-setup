@@ -126,7 +126,7 @@ read junk
 clear
 echo "Installing nala, press Enter to continue"
 read junk
-sudo apt install nala
+sudo apt install nala -y
 
 # Cleanup & exit
 clear
