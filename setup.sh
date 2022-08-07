@@ -1,6 +1,19 @@
 #!/bin/bash
 
 
+# Get information for configuration
+clear
+echo 'Enter a hostname for this server (example ubuntu-server)'
+read hostname
+clear
+sudo hostnamectl set-hostname $hostanme
+echo "hostname has been set to $hostname"
+echo
+echo 
+echo "Press Enter to continue"
+read junk
+
+
 # Install and activate aliases
 clear
 echo 'Installing and activating aliases'
