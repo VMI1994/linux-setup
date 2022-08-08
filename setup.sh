@@ -1,6 +1,15 @@
 #!/bin/bash
 
 
+# Define functions
+pause() {
+echo
+echo
+echo "Press Enter to continue"
+read junk
+}
+
+
 # Get information for configuration
 clear
 echo 'Enter a hostname for this server (example ubuntu-server)'
@@ -8,10 +17,7 @@ read hostname
 clear
 sudo hostnamectl set-hostname $hostname
 echo "hostname has been set to $hostname"
-echo
-echo 
-echo "Press Enter to continue"
-read junk
+pause()
 
 
 # Install and activate aliases
@@ -20,10 +26,7 @@ echo 'Installing and activating aliases'
 sleep 1
 cat ~/linux-setup/alias.txt >> ~/.bashrc
 bash ~/linux-setup/alias.sh &
-echo
-echo
-echo 'done...Press Enter to continue'
-read junk
+pause()
 
 
 # Install respositories
@@ -33,10 +36,7 @@ echo "Installing additional repositories"
 sudo add-apt-repository -y ppa:teejee2008/timeshift #repo for timeshift
 echo "deb https://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list #nala repo
 wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null #nala key
-echo
-echo
-echo "Done, press Enter to continue"
-read junk
+pause()
 
 
 # Update system
@@ -44,10 +44,8 @@ clear
 echo "Updating the system"
 sudo apt update
 sudo apt dist-upgrade -y
-echo
-echo
-echo "The system has been updated, Press Enter to contue"
-read junk
+pause()
+
 
 # Remove cloud-init if present and Install common programs
 clear
@@ -60,7 +58,10 @@ then
 else
   echo "Cloud-init not installed, continuing"
 fi
-sleep 2
+pause()
+
+
+# Install common programs
 clear
 echo "Installing common programs"
 # Create list of apps to install from apps.txt
@@ -77,34 +78,26 @@ done
 apps=("$list")
 sudo apt install $apps -y
 curl -s https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /usr/local/bin/cht.sh
-echo
-echo
-echo "Programs installed, Press Enter to continue"
-read junk
+pause()
+
 
 # Cleaning up unneeded files
 echo "Removing unused packages"
 sudo apt autoremove -y
-echo
-echo
-echo "Done, Press Enter"
-read junk
+pause()
+
 
 # Set up unattended-upgrades (Credit to Jay LaCroix - learnlinux.tv)
 clear
 echo "Setting up unattended-upgrades...at the prompt please select 'Yes'..."
-echo
-echo "Press Enter to continue"
-read junk
+pause()
 sudo dpkg-reconfigure --priority=low unattended-upgrades
 sudo rm /etc/apt/apt.conf.d/20auto-upgrades
 sudo cp ~/linux-setup/20auto-upgrades /etc/apt/apt.conf.d/20auto-upgrades
 sudo rm /etc/apt/apt.conf.d/50unattended-upgrades
 sudo cp ~/linux-setup/50unattended-upgrades /etc/apt/apt.conf.d/50unattended-upgrades
-echo
-echo
-echo "Press Enter to continue"
-read junk
+pause()
+
 
 # Configure OpenSSH-Server (Credit to Jay LaCroix - learnlinux.tv)
 clear
@@ -113,9 +106,7 @@ sleep 1
 echo
 echo
 echo "Regenerating SSH keys....Please press enter at all prompts..."
-echo
-echo "Press Enter to continue"
-read junk
+pause()
 sudo ssh-keygen -t ed25519
 sudo mv /etc/ssh/sshd_config /etc/ssh/sshd_config.old
 sudo cp ~/linux-setup/sshd_config /etc/ssh/sshd_config
@@ -124,36 +115,39 @@ echo
 echo "SSH configured....restarting service"
 sleep 2
 sudo systemctl restart sshd
-echo
-echo
-echo "SSH service restarted, press Enter to continue"
-read junk
+pause()
+
 
 # Setup Fail2ban
 clear
 echo "Setting up Fail2ban"
 sudo cp ~/linux-setup/jail.local /etc/fail2ban/jail.local
-echo
-echo
 echo "Fail2ban is Setup"
-echo "Press Enter"
-read junk
+pause()
+
 
 # Attempt to install nala (frontend for apt package manager)
 clear
 echo "Installing nala, press Enter to continue"
-read junk
+pause()
 sudo apt install nala -y
+which nala > /dev/null
+if [ $? == 0 ]
+then
+  echo 'nala installed successfuly'
+  pause()
+else
+  echo 'nala is not available for this distribution'
+  pause()
+fi
 
 
 # Run tasksel
 echo "tasksel will now run."
 echo
 echo "Select any additional software to install"
-echo "Press Enter to continue"
-read junk
+pause()
 sudo tasksel
-
 
 
 # Cleanup & exit
