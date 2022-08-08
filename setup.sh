@@ -17,7 +17,7 @@ read hostname
 clear
 sudo hostnamectl set-hostname $hostname
 echo "hostname has been set to $hostname"
-pause()
+pause
 
 
 # Install and activate aliases
@@ -26,7 +26,7 @@ echo 'Installing and activating aliases'
 sleep 1
 cat ~/linux-setup/alias.txt >> ~/.bashrc
 bash ~/linux-setup/alias.sh &
-pause()
+pause
 
 
 # Install respositories
@@ -36,7 +36,7 @@ echo "Installing additional repositories"
 sudo add-apt-repository -y ppa:teejee2008/timeshift #repo for timeshift
 echo "deb https://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list #nala repo
 wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null #nala key
-pause()
+pause
 
 
 # Update system
@@ -44,7 +44,7 @@ clear
 echo "Updating the system"
 sudo apt update
 sudo apt dist-upgrade -y
-pause()
+pause
 
 
 # Remove cloud-init if present and Install common programs
@@ -58,7 +58,7 @@ then
 else
   echo "Cloud-init not installed, continuing"
 fi
-pause()
+pause
 
 
 # Install common programs
@@ -78,25 +78,25 @@ done
 apps=("$list")
 sudo apt install $apps -y
 curl -s https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /usr/local/bin/cht.sh
-pause()
+pause
 
 
 # Cleaning up unneeded files
 echo "Removing unused packages"
 sudo apt autoremove -y
-pause()
+pause
 
 
 # Set up unattended-upgrades (Credit to Jay LaCroix - learnlinux.tv)
 clear
 echo "Setting up unattended-upgrades...at the prompt please select 'Yes'..."
-pause()
+pause
 sudo dpkg-reconfigure --priority=low unattended-upgrades
 sudo rm /etc/apt/apt.conf.d/20auto-upgrades
 sudo cp ~/linux-setup/20auto-upgrades /etc/apt/apt.conf.d/20auto-upgrades
 sudo rm /etc/apt/apt.conf.d/50unattended-upgrades
 sudo cp ~/linux-setup/50unattended-upgrades /etc/apt/apt.conf.d/50unattended-upgrades
-pause()
+pause
 
 
 # Configure OpenSSH-Server (Credit to Jay LaCroix - learnlinux.tv)
@@ -106,16 +106,15 @@ sleep 1
 echo
 echo
 echo "Regenerating SSH keys....Please press enter at all prompts..."
-pause()
+pause
 sudo ssh-keygen -t ed25519
 sudo mv /etc/ssh/sshd_config /etc/ssh/sshd_config.old
 sudo cp ~/linux-setup/sshd_config /etc/ssh/sshd_config
 echo
 echo
 echo "SSH configured....restarting service"
-sleep 2
 sudo systemctl restart sshd
-pause()
+pause
 
 
 # Setup Fail2ban
@@ -123,22 +122,22 @@ clear
 echo "Setting up Fail2ban"
 sudo cp ~/linux-setup/jail.local /etc/fail2ban/jail.local
 echo "Fail2ban is Setup"
-pause()
+pause
 
 
 # Attempt to install nala (frontend for apt package manager)
 clear
 echo "Installing nala, press Enter to continue"
-pause()
+pause
 sudo apt install nala -y
 which nala > /dev/null
 if [ $? == 0 ]
 then
   echo 'nala installed successfuly'
-  pause()
+  pause
 else
   echo 'nala is not available for this distribution'
-  pause()
+  pause
 fi
 
 
@@ -146,7 +145,7 @@ fi
 echo "tasksel will now run."
 echo
 echo "Select any additional software to install"
-pause()
+pause
 sudo tasksel
 
 
