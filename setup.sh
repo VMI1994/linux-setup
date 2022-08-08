@@ -150,9 +150,10 @@ sudo apt install nala -y
 echo "tasksel will now run."
 echo
 echo "Select any additional software to install"
-sudo tasksel
 echo "Press Enter to continue"
 read junk
+sudo tasksel
+
 
 
 # Cleanup & exit
