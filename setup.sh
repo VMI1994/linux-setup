@@ -34,8 +34,6 @@ clear
 echo "Installing additional repositories"
 # Additional needed repositories
 sudo add-apt-repository -y ppa:teejee2008/timeshift #repo for timeshift
-echo "deb https://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list #nala repo
-wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null #nala key
 pause
 
 
@@ -54,7 +52,7 @@ which cloud-init > /dev/null
 if [ $? == 0 ]
 then
   echo "Cloud-init detected, removing"
-  sudo apt remove cloud-init -y
+  sudo apt purge cloud-init -y
 else
   echo "Cloud-init not installed, continuing"
 fi
@@ -123,22 +121,6 @@ echo "Setting up Fail2ban"
 sudo cp ~/linux-setup/jail.local /etc/fail2ban/jail.local
 echo "Fail2ban is Setup"
 pause
-
-
-# Attempt to install nala (frontend for apt package manager)
-clear
-echo "Installing nala, press Enter to continue"
-pause
-sudo apt install nala -y
-which nala > /dev/null
-if [ $? == 0 ]
-then
-  echo 'nala installed successfuly'
-  pause
-else
-  echo 'nala is not available for this distribution'
-  pause
-fi
 
 
 # Run tasksel
