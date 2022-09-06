@@ -49,7 +49,7 @@ sleep 5
 clear
 echo "Checking for presence of cloud-init"
 which cloud-init > /dev/null
-if [ $? == 0 ]
+if [ $? = 0 ]
 then
   echo "Cloud-init detected, removing"
   sudo apt purge cloud-init -y
