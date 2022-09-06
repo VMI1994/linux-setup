@@ -17,7 +17,7 @@ read hostname
 clear
 sudo hostnamectl set-hostname $hostname
 echo "hostname has been set to $hostname"
-pause
+sleep 5
 
 
 # Install and activate aliases
@@ -26,7 +26,7 @@ echo 'Installing and activating aliases'
 sleep 1
 cat ~/linux-setup/alias.txt >> ~/.bashrc
 bash ~/linux-setup/alias.sh &
-pause
+sleep 5
 
 
 # Install respositories
@@ -34,7 +34,7 @@ clear
 echo "Installing additional repositories"
 # Additional needed repositories
 sudo add-apt-repository -y ppa:teejee2008/timeshift #repo for timeshift
-pause
+sleep 5
 
 
 # Update system
@@ -42,7 +42,7 @@ clear
 echo "Updating the system"
 sudo apt update
 sudo apt dist-upgrade -y
-pause
+sleep 5
 
 
 # Remove cloud-init if present and Install common programs
@@ -56,7 +56,7 @@ then
 else
   echo "Cloud-init not installed, continuing"
 fi
-pause
+sleep 5
 
 
 # Install common programs
@@ -76,13 +76,14 @@ done
 apps=("$list")
 sudo apt install $apps -y
 curl -s https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /usr/local/bin/cht.sh
-pause
+sleep 5
 
 
 # Cleaning up unneeded files
+clear
 echo "Removing unused packages"
 sudo apt autoremove -y
-pause
+sleep 5
 
 
 # Set up unattended-upgrades (Credit to Jay LaCroix - learnlinux.tv)
@@ -94,7 +95,7 @@ sudo rm /etc/apt/apt.conf.d/20auto-upgrades
 sudo cp ~/linux-setup/20auto-upgrades /etc/apt/apt.conf.d/20auto-upgrades
 sudo rm /etc/apt/apt.conf.d/50unattended-upgrades
 sudo cp ~/linux-setup/50unattended-upgrades /etc/apt/apt.conf.d/50unattended-upgrades
-pause
+sleep 5
 
 
 # Configure OpenSSH-Server (Credit to Jay LaCroix - learnlinux.tv)
@@ -112,7 +113,7 @@ echo
 echo
 echo "SSH configured....restarting service"
 sudo systemctl restart sshd
-pause
+sleep 5
 
 
 # Setup Fail2ban
@@ -120,14 +121,14 @@ clear
 echo "Setting up Fail2ban"
 sudo cp ~/linux-setup/jail.local /etc/fail2ban/jail.local
 echo "Fail2ban is Setup"
-pause
+sleep 5
 
 
 # Run tasksel
 echo "tasksel will now run."
 echo
 echo "Select any additional software to install"
-pause
+sleep 5
 sudo tasksel
 
 
