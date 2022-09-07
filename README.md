@@ -33,7 +33,6 @@ What it does in a nutshell is:
   8. Installs and configures unattended-upgrades and moves config files into place (config is 20auto-upgrades & 50unattended-upgrades)
   9. Installs and configures OpenSSH-server, generates ssh keys and restarts the service
   10. Installs and configures fail2ban (check jail.local for configuration settings)
-  11. Attempts to install nala (frontend for apt package manager)
-  12. Finishes and deletes all downloaded files
+  11. Finishes and deletes all downloaded files
 
 
