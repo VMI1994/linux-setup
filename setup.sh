@@ -15,7 +15,7 @@ clear
 echo 'Enter a hostname for this server (example ubuntu-server)'
 read hostname
 clear
-sudo hostnamectl set-hostname $hostname
+sudo /bin/hostname $hostname
 echo "hostname has been set to $hostname"
 sleep 2
 
@@ -27,14 +27,6 @@ sleep 1
 cat ~/linux-setup/alias.txt >> ~/.bashrc
 bash ~/linux-setup/alias.sh &
 sleep 5
-
-
-# Install respositories
-clear
-echo "Installing additional repositories"
-# Additional needed repositories
-sudo add-apt-repository -y ppa:teejee2008/timeshift #repo for timeshift
-sleep 2
 
 
 # Update system
@@ -113,23 +105,6 @@ echo
 echo "SSH configured....restarting service"
 sudo systemctl restart sshd
 sleep 2
-
-
-# Setup Fail2ban
-clear
-echo "Setting up Fail2ban"
-sudo cp ~/linux-setup/jail.local /etc/fail2ban/jail.local
-echo "Fail2ban is Setup"
-sleep 2
-
-
-# Run tasksel
-echo "tasksel will now run."
-echo
-echo "Select any additional software to install"
-sleep 3
-sudo tasksel
-
 
 # Cleanup & exit
 clear
