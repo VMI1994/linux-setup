@@ -3,16 +3,11 @@ tmux
 htop
 openssh-server
 unattended-upgrades
-fail2ban
 nmap
 curl
 rsync
-rlwrap
 transmission
-timeshift
-clamav
-clamtk
-tasksel
 python3
 wget
 gparted
+tar
