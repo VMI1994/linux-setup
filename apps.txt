@@ -6,8 +6,11 @@ unattended-upgrades
 nmap
 curl
 rsync
-transmission
 python3
 wget
 gparted
 tar
+btop
+iftop
+htop
+
