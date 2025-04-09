@@ -15,7 +15,6 @@ clear
 echo 'Enter a hostname for this server (example ubuntu-server)'
 read hostname
 clear
-sudo /bin/hostname $hostname
 echo "hostname has been set to $hostname"
 sleep 2
 
@@ -115,4 +114,8 @@ echo
 echo "Setup is now erasing files and exiting"
 sleep 1
 sleep 1 && sudo rm -rf ~/linux-setup
+sudo hostnamectl set-hostname $hostname
+exec bash
+exit
+
 exit
